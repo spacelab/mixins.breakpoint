@@ -1,8 +1,8 @@
 $breakpoints: (
   "baby-bear"    "only screen and (min-width: 400px)",
-  "mama-bear"    "only screen and (min-width: 600)",
+  "mama-bear"    "only screen and (min-width: 600px)",
   "papa-bear"    "only screen and (min-width: 900px)",
-  "granny-bear"  "only screen and (max-width: 1200px)"
+  "granny-bear"  "only screen and (min-width: 1200px)"
 ) !default;
 
 @mixin mq($value) {
