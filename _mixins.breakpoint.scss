@@ -21,7 +21,7 @@ $breakpoints: (
     }
   }
 
-  @if $mq-found == false{
+  @if $mq-found == false {
     @warn "Could not find breakpoint with the name ‘#{$value}’."
   }
 }
