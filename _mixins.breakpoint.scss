@@ -1,6 +1,5 @@
 $default-breakpoint: root;
 $current-breakpoint: $default-breakpoint;
-$placeholders: ();
 
 @mixin bp($breakpoint) {
   // Get the width from the keyword `$breakpoint`
@@ -27,42 +26,4 @@ $placeholders: ();
   @else {
     @warn "Could not find breakpoint with the name `#{$breakpoint}`.";
   }
-}
-
-@mixin placeholder($name) {
-      // If placeholder doesn't exist yet in `$placeholders` list
-      @if not index($placeholders, $name) {
-        // Store its name
-        $placeholders: append($placeholders, $name) !global;
-
-    // At root level
-    @at-root {
-      // Looping through `$breakpoints`
-      @each $breakpoint, $value in $breakpoints {
-            // Opening a media query block
-            @media #{$value} {
-              // Generating a placeholder
-              // Called $name-$breakpoint
-              %#{$name}-#{$breakpoint} {
-            @content;
-          }
-        }
-      }
-
-      // And dumping a placeholder out of any media query as well
-      // so basically at root level
-      %#{$name}-#{$default-breakpoint} {
-        @content;
-      }
-    }
-  }
-
-  // If placeholder already exists, just warn the user
-  @else {
-    @warn "Placeholder `#{$name}` already exists.";
-  }
-}
-
-@mixin extend($name) {
-  @extend %#{$name}-#{$current-breakpoint} !optional;
 }
